@@ -5,7 +5,7 @@
     <string name="explore">Explore</string>
     <string name="traverse">Traverse</string>
     <string name="memorize">Memorize</string>
-    <string name="stored_memories">Stored Memories</string>
-    <string name="loot_gathered">Loot Gathered: </string>
-    <string name="relics_found">Relics Found:</string>
+    <string name="stored_memories">STORED MEMORIES:</string>
+    <string name="loot_gathered">LOOT GATHERED: </string>
+    <string name="relics_found">RELICS FOUND:</string>
 </resources>
