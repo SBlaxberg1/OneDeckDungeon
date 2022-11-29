@@ -5,4 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/odd_icon_bg"
-    tools:context=".MainActivity" />
+    tools:context=".MainActivity" >
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_explore"
+        android:layout_width="134dp"
+        android:layout_height="77dp"
+        android:background="@drawable/button_stone"
+        android:fontFamily="monospace"
+        android:text="@string/explore"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="390dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_traverse"
+        android:layout_width="134dp"
+        android:layout_height="77dp"
+        android:background="@drawable/button_stone"
+        android:fontFamily="monospace"
+        android:text="@string/traverse"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="138dp"
+        tools:layout_editor_absoluteY="390dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_memorize"
+        android:layout_width="134dp"
+        android:layout_height="77dp"
+        android:background="@drawable/button_stone"
+        android:fontFamily="monospace"
+        android:text="@string/memorize"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="272dp"
+        tools:layout_editor_absoluteY="390dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/deck_display"
+        android:layout_width="650dp"
+        android:layout_height="477dp"
+        android:background="@drawable/button_stone"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="horizontal"
+        tools:layout_editor_absoluteX="-145dp"
+        tools:layout_editor_absoluteY="-35dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="376dp"
+        android:layout_height="232dp"
+        android:background="@drawable/button_stone"
+        android:text="@string/stored_memories"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="467dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

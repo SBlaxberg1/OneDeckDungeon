@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">One Deck Dungeon</string>
+    <string name="dungeon_deck">Dungeon Deck</string>
+    <string name="look_ahead">Look Ahead</string>
+    <string name="explore">Explore</string>
+    <string name="traverse">Traverse</string>
+    <string name="memorize">Memorize</string>
+    <string name="stored_memories">Stored Memories</string>
+    <string name="loot_gathered">Loot Gathered: </string>
+    <string name="relics_found">Relics Found:</string>
 </resources>
