@@ -5,108 +5,197 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/odd_icon_bg"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_explore"
-        android:layout_width="134dp"
-        android:layout_height="77dp"
+        android:layout_width="192dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="363dp"
+        android:layout_marginBottom="362dp"
         android:background="@drawable/odd_button"
         android:fontFamily="monospace"
         android:text="@string/explore"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="19sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_traverse"
-        android:layout_width="134dp"
-        android:layout_height="77dp"
-        android:background="@drawable/odd_button"
-        android:fontFamily="monospace"
-        android:text="@string/traverse"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="390dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_memorize"
-        android:layout_width="134dp"
-        android:layout_height="77dp"
+        android:layout_width="179dp"
+        android:layout_height="119dp"
+        android:layout_marginTop="363dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/odd_button"
         android:fontFamily="monospace"
         android:text="@string/memorize"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="19sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="272dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <HorizontalScrollView
-        android:id="@+id/deck_display"
-        android:layout_width="571dp"
-        android:layout_height="389dp"
-        android:background="@drawable/odd_card_rack"
-        android:scrollbarStyle="outsideInset"
-        android:scrollbars="horizontal"
-        tools:layout_editor_absoluteX="-90dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
-    </HorizontalScrollView>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="413dp"
+        android:layout_height="377dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_traverse1"
+            android:layout_width="134dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginEnd="210dp"
+            android:background="@drawable/odd_button"
+            android:fontFamily="monospace"
+            android:text="@string/traverse"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_traverse2"
+            android:layout_width="134dp"
+            android:layout_height="77dp"
+            android:layout_marginStart="212dp"
+            android:layout_marginTop="230dp"
+            android:background="@drawable/odd_button"
+            android:fontFamily="monospace"
+            android:text="@string/traverse"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/card_rack"
+            android:layout_width="539dp"
+            android:layout_height="438dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/odd_card_rack" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="546dp"
         android:layout_height="373dp"
         android:background="@drawable/odd_card_rack_flipped"
-        tools:layout_editor_absoluteX="-57dp"
-        tools:layout_editor_absoluteY="481dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_memorize"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/text_stored_memories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:fontFamily="monospace"
             android:text="@string/stored_memories"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="159dp"
-            tools:layout_editor_absoluteY="64dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_loot_gathered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="252dp"
             android:fontFamily="monospace"
             android:text="@string/loot_gathered"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="121dp"
-            tools:layout_editor_absoluteY="224dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_relics_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="121dp"
+            android:layout_marginBottom="57dp"
             android:fontFamily="monospace"
             android:text="@string/relics_found"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="121dp"
-            tools:layout_editor_absoluteY="265dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_recall1"
+            android:layout_width="117dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="205dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/odd_button"
+            android:fontFamily="monospace"
+            android:text="@string/recall"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_recall2"
+            android:layout_width="117dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="180dp"
+            android:layout_marginEnd="104dp"
+            android:background="@drawable/odd_button"
+            android:fontFamily="monospace"
+            android:text="@string/recall"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_recall3"
+            android:layout_width="117dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/odd_button"
+            android:fontFamily="monospace"
+            android:text="@string/recall"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

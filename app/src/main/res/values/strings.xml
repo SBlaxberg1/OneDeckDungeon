@@ -8,4 +8,5 @@
     <string name="stored_memories">STORED MEMORIES:</string>
     <string name="loot_gathered">LOOT GATHERED: </string>
     <string name="relics_found">RELICS FOUND:</string>
+    <string name="recall">Recall</string>
 </resources>
