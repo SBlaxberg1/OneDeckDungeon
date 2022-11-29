@@ -1,6 +1,7 @@
 package com.example.onedeckdungeon;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck extends Card{
@@ -13,11 +14,12 @@ public class Deck extends Card{
 
     public void initCards(){
         deck = new ArrayList<Card>();
-        Card tempCard = new Card();
+        Card tempCard;
         int placeHolder = 1;
         int count = 0;
 
         for (int i = 0; i < 54; i++){
+            tempCard = new Card();
             if (i >= 0 && i <= 1) {
                 tempCard.value = -1;
                 tempCard.faceUp = false;
@@ -43,6 +45,10 @@ public class Deck extends Card{
     }
 
     public void shuffleDeck(){
+        Collections.shuffle(deck);
 
+        for (int i = 0; i < 54; i++) {
+            System.out.print(deck.get(i).value + " ");
+        }
     }
 }
