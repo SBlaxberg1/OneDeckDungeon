@@ -9,4 +9,7 @@
     <string name="loot_gathered">LOOT GATHERED: </string>
     <string name="relics_found">RELICS FOUND:</string>
     <string name="recall">Recall</string>
+    <string name="play">PLAY</string>
+    <string name="highscores">HIGH SCORES</string>
+    <string name="settings">SETTINGS</string>
 </resources>

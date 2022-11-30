@@ -5,15 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/odd_icon_bg"
-    tools:context=".MainActivity">
+    tools:context=".PlayGame">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_explore"
         android:layout_width="192dp"
         android:layout_height="120dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="363dp"
-        android:layout_marginBottom="362dp"
         android:background="@drawable/odd_button"
         android:fontFamily="monospace"
         android:text="@string/explore"
@@ -22,15 +19,16 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/button_memorize"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_memorize"
         android:layout_width="179dp"
         android:layout_height="119dp"
-        android:layout_marginTop="363dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/odd_button"
         android:fontFamily="monospace"
         android:text="@string/memorize"
@@ -38,10 +36,15 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_explore"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="413dp"
         android:layout_height="377dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,8 +56,8 @@
             android:id="@+id/button_traverse1"
             android:layout_width="134dp"
             android:layout_height="77dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginEnd="210dp"
+            android:layout_marginTop="212dp"
+            android:layout_marginEnd="208dp"
             android:background="@drawable/odd_button"
             android:fontFamily="monospace"
             android:text="@string/traverse"
@@ -63,14 +66,15 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_traverse2"
             android:layout_width="134dp"
             android:layout_height="77dp"
-            android:layout_marginStart="212dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginStart="216dp"
+            android:layout_marginTop="212dp"
             android:background="@drawable/odd_button"
             android:fontFamily="monospace"
             android:text="@string/traverse"
@@ -89,6 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/odd_card_rack" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -97,13 +102,12 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="546dp"
         android:layout_height="373dp"
+        android:layout_marginTop="389dp"
         android:background="@drawable/odd_card_rack_flipped"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_memorize"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_stored_memories"
@@ -162,7 +166,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_recall2"
