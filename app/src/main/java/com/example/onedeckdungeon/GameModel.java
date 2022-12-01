@@ -8,10 +8,10 @@ public class GameModel {
 
     private Deck dungeon;
     private List<Card> memories;
-    int lootCount = 0;
-    int relicCount = 0;
-    int highScore;
-    int gameStatus = 0; // 0=playing, 1=won, 2=lost
+    private int lootCount = 0;
+    private int relicCount = 0;
+    private int highScore;
+    private int gameStatus = 0; // 0=playing, 1=won, 2=lost
 
     public GameModel(){
         dungeon = new Deck();
@@ -56,6 +56,7 @@ public class GameModel {
 
         for (int i = 0; i < traverseValue; i++)
         {
+            top = dungeon.topCard();
             dungeon.addToBottom(top);
             dungeon.removeTop();
         }
@@ -97,6 +98,22 @@ public class GameModel {
 
     public Card secondCard(){
         return dungeon.secondCard();
+    }
+
+    public int getLootCount() {
+        return lootCount;
+    }
+
+    public int getRelicCount() {
+        return relicCount;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public int getGameStatus() {
+        return gameStatus;
     }
 
 }

@@ -59,13 +59,13 @@ public class PlayGame extends AppCompatActivity {
             Toast.makeText(this, "You traversed " + gameModel.topCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
             gameModel.traverse(1);
             updateCardImages();
-            lootAmount.setText(String.valueOf(gameModel.lootCount));
-            relicCount.setText(String.valueOf(gameModel.relicCount));
+            lootAmount.setText(String.valueOf(gameModel.getLootCount()));
+            relicCount.setText(String.valueOf(gameModel.getRelicCount()));
 
-            if (gameModel.gameStatus == 1)
+            if (gameModel.getGameStatus() == 1)
             {
                 win();
-            } else if (gameModel.gameStatus == 2)
+            } else if (gameModel.getGameStatus() == 2)
             {
                 lose();
             }
@@ -79,13 +79,13 @@ public class PlayGame extends AppCompatActivity {
             Toast.makeText(this, "You traversed " + gameModel.secondCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
             gameModel.traverse(2);
             updateCardImages();
-            lootAmount.setText(String.valueOf(gameModel.lootCount));
-            relicCount.setText(String.valueOf(gameModel.relicCount));
+            lootAmount.setText(String.valueOf(gameModel.getLootCount()));
+            relicCount.setText(String.valueOf(gameModel.getRelicCount()));
 
-            if (gameModel.gameStatus == 1)
+            if (gameModel.getGameStatus() == 1)
             {
                 win();
-            } else if (gameModel.gameStatus == 2)
+            } else if (gameModel.getGameStatus() == 2)
             {
                 lose();
             }
