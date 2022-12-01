@@ -2,6 +2,7 @@ package com.example.onedeckdungeon;
 
 import android.content.Context;
 
+import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
@@ -72,13 +73,9 @@ public class GameModel {
     }
 
     public void win() throws java.io.FileNotFoundException{
-        /*
-        Context context = App.instance.getApplicationContext();
         if (lootCount > highScore){
             highScore = lootCount;
-            OutputStreamWriter output = new OutputStreamWriter(context.openFileOutput("HighScore.txt", context.MODE_PRIVATE));
         }
-         */
     }
 
     public void lose(){
