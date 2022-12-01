@@ -14,6 +14,10 @@ public class GameModel {
     int relicCount = 0;
     int highScore;
 
+    public GameModel(){
+        dungeon = new Deck();
+    }
+
     public void explore(){
         Card top = dungeon.topCard();
         Card second = dungeon.secondCard();
