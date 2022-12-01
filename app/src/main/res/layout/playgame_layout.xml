@@ -23,7 +23,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5"
+        android:onClick="explore"
+        />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_memorize"
@@ -67,7 +69,8 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+            tools:ignore="DuplicateSpeakableTextCheck"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_traverse2"
@@ -83,7 +86,8 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <ImageView
             android:id="@+id/card_rack"
@@ -91,10 +95,32 @@
             android:layout_height="438dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.579"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/odd_card_rack" />
+
+        <ImageView
+            android:id="@+id/cardView2"
+            android:layout_width="157dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toEndOf="@+id/cardView1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/card_default" />
+
+        <ImageView
+            android:id="@+id/cardView1"
+            android:layout_width="157dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/card_default" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,10 +128,10 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="546dp"
         android:layout_height="373dp"
-        android:layout_marginTop="389dp"
+        android:layout_marginTop="384dp"
         android:background="@drawable/odd_card_rack_flipped"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
