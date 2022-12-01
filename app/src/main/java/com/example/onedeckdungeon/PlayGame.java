@@ -7,12 +7,18 @@ import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class PlayGame extends AppCompatActivity {
 
     private GameModel gameModel;
     private ImageView cardOne;
     private ImageView cardTwo;
+    private TextView lootAmount;
+    private TextView relicCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,9 @@ public class PlayGame extends AppCompatActivity {
 
         cardOne = (ImageView) findViewById(R.id.cardView1);
         cardTwo = (ImageView) findViewById(R.id.cardView2);
+
+        lootAmount = (TextView) findViewById(R.id.loot_amount);
+        relicCount = (TextView) findViewById(R.id.relics_amount);
 
         gameModel = new GameModel();
         startGame();
@@ -42,6 +51,55 @@ public class PlayGame extends AppCompatActivity {
     {
         gameModel.explore();
         updateCardImages();
+    }
+
+    public void traverseFirst(View view)
+    {
+        if (gameModel.topCard().faceUp && gameModel.topCard().value > 1) {
+            Toast.makeText(this, "You traversed " + gameModel.topCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
+            gameModel.traverse(1);
+            updateCardImages();
+            lootAmount.setText(String.valueOf(gameModel.lootCount));
+            relicCount.setText(String.valueOf(gameModel.relicCount));
+
+            if (gameModel.gameStatus == 1)
+            {
+                win();
+            } else if (gameModel.gameStatus == 2)
+            {
+                lose();
+            }
+        }
+    }
+
+    public void traverseSecond(View view)
+    {
+        if (gameModel.secondCard().faceUp && gameModel.secondCard().value > 1)
+        {
+            Toast.makeText(this, "You traversed " + gameModel.secondCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
+            gameModel.traverse(2);
+            updateCardImages();
+            lootAmount.setText(String.valueOf(gameModel.lootCount));
+            relicCount.setText(String.valueOf(gameModel.relicCount));
+
+            if (gameModel.gameStatus == 1)
+            {
+                win();
+            } else if (gameModel.gameStatus == 2)
+            {
+                lose();
+            }
+        }
+    }
+
+    public void win()
+    {
+        Toast.makeText(this, "You Won!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void lose()
+    {
+        Toast.makeText(this, "You Lost!", Toast.LENGTH_SHORT).show();
     }
 
     private int getCardImage(Card c)

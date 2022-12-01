@@ -70,6 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="DuplicateSpeakableTextCheck"
+            android:onClick="traverseFirst"
             />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -87,6 +88,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:onClick="traverseSecond"
             />
 
         <ImageView
@@ -128,10 +130,10 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="546dp"
         android:layout_height="373dp"
-        android:layout_marginTop="384dp"
+        android:layout_marginTop="392dp"
         android:background="@drawable/odd_card_rack_flipped"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -158,6 +160,34 @@
             android:layout_marginTop="252dp"
             android:fontFamily="monospace"
             android:text="@string/loot_gathered"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/loot_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="388dp"
+            android:layout_marginTop="252dp"
+            android:fontFamily="monospace"
+            android:text="@string/ZERO"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/relics_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="388dp"
+            android:layout_marginTop="284dp"
+            android:fontFamily="monospace"
+            android:text="@string/ZERO"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -226,6 +256,36 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/memory_slot1"
+            android:layout_width="87dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/memory_empty" />
+
+        <ImageView
+            android:id="@+id/memory_slot2"
+            android:layout_width="87dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="336dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/memory_empty" />
+
+        <ImageView
+            android:id="@+id/memory_slot3"
+            android:layout_width="87dp"
+            android:layout_height="93dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/memory_empty" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

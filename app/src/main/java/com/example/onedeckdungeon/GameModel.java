@@ -1,9 +1,7 @@
 package com.example.onedeckdungeon;
 
-import android.content.Context;
+import android.widget.Toast;
 
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class GameModel {
@@ -13,6 +11,7 @@ public class GameModel {
     int lootCount = 0;
     int relicCount = 0;
     int highScore;
+    int gameStatus = 0; // 0=playing, 1=won, 2=lost
 
     public GameModel(){
         dungeon = new Deck();
@@ -23,15 +22,17 @@ public class GameModel {
         Card second = dungeon.secondCard();
         if (top.getFaceUp() == false){
             top.setFaceUp(true);
-            second.setFaceUp(false);
+            second.setFaceUp(true);
         }
     }
 
     public void memorize(){
         Card top = dungeon.topCard();
-        if (top.getValue() >= 2 && top.getValue() <= 10){
-           memories.add(top);
-           dungeon.removeTop();
+        if (memories.size() < 3) {
+            if (top.getValue() >= 2 && top.getValue() <= 10) {
+                memories.add(top);
+                dungeon.removeTop();
+            }
         }
     }
 
@@ -40,50 +41,54 @@ public class GameModel {
         memories.remove(choice);
     }
 
-    public void traverse(int choice) throws java.io.FileNotFoundException{
+    public void traverse(int choice){
         Card top = dungeon.topCard();
         Card second = dungeon.secondCard();
         int traverseValue = 0;
         if (choice == 1)
+        {
             traverseValue = top.getValue();
+        }
         else if (choice == 2)
+        {
             traverseValue = second.getValue();
+        }
 
-        for (int i = 0; i < traverseValue; i++){
+        for (int i = 0; i < traverseValue; i++)
+        {
             dungeon.addToBottom(top);
             dungeon.removeTop();
         }
         collect();
     }
 
-    public void collect() throws java.io.FileNotFoundException{
+    public void collect() {
         Card top = dungeon.topCard();
-        if (top.getValue() == 1) {
-            relicCount++;
-            dungeon.removeTop();
+        if (top.getFaceUp()) {
+            if (top.getValue() == 1) {
+                relicCount++;
+                dungeon.removeTop();
+            } else if (top.getValue() == 0) {
+                lose();
+            } else if (top.getValue() == -1) {
+                if (relicCount == 4)
+                    win();
+            } else {
+                lootCount++;
+                dungeon.removeTop();
+            }
         }
-        else if (top.getValue() == 0) {
-            lose();
-        }
-        else if (top.getValue() == -1){
-            if (relicCount == 4)
-                win();
-        }
-        else{
-            lootCount++;
-            dungeon.removeTop();
-        }
-
     }
 
-    public void win() throws java.io.FileNotFoundException{
+    public void win() {
         if (lootCount > highScore){
-            highScore = lootCount;
+            highScore = (lootCount * 3);
         }
+        gameStatus = 1;
     }
 
     public void lose(){
-
+        gameStatus = 2;
     }
 
     public Card topCard(){
