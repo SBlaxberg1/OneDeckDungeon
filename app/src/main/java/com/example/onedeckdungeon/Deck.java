@@ -51,4 +51,24 @@ public class Deck extends Card{
             System.out.print(deck.get(i).value + " ");
         }
     }
+
+    public Card topCard(){
+        return deck.get(0);
+    }
+
+    public Card secondCard(){
+        return deck.get(1);
+    }
+
+    public void removeTop(){
+        deck.remove(0);
+    }
+
+    public void addToTop(Card c){
+        deck.add(0, c);
+    }
+
+    public void addToBottom(Card c){
+        deck.add(c);
+    }
 }
