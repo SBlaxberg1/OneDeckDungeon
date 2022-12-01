@@ -46,10 +46,10 @@ public class Deck extends Card{
 
     public void shuffleDeck(){
         Collections.shuffle(deck);
-
-        for (int i = 0; i < 54; i++) {
-            System.out.print(deck.get(i).value + " ");
-        }
+        do {
+            if (topCard().value < 2 && secondCard().value < 2)
+                Collections.shuffle(deck);
+        }while (topCard().value < 2 && secondCard().value < 2);
     }
 
     public Card topCard(){
