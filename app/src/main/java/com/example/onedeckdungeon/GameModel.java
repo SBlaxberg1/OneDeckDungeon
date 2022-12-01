@@ -1,5 +1,8 @@
 package com.example.onedeckdungeon;
 
+import android.content.Context;
+
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class GameModel {
@@ -8,6 +11,7 @@ public class GameModel {
     private List<Card> memories;
     int lootCount = 0;
     int relicCount = 0;
+    int highScore;
 
     public void explore(){
         Card top = dungeon.topCard();
@@ -31,7 +35,7 @@ public class GameModel {
         memories.remove(choice);
     }
 
-    public void traverse(int choice){
+    public void traverse(int choice) throws java.io.FileNotFoundException{
         Card top = dungeon.topCard();
         Card second = dungeon.secondCard();
         int traverseValue = 0;
@@ -47,12 +51,15 @@ public class GameModel {
         collect();
     }
 
-    public void collect(){
+    public void collect() throws java.io.FileNotFoundException{
         Card top = dungeon.topCard();
-        if (top.getValue() == 1)
+        if (top.getValue() == 1) {
             relicCount++;
-        else if (top.getValue() == 0)
+            dungeon.removeTop();
+        }
+        else if (top.getValue() == 0) {
             lose();
+        }
         else if (top.getValue() == -1){
             if (relicCount == 4)
                 win();
@@ -64,12 +71,26 @@ public class GameModel {
 
     }
 
-    public void win(){
-
+    public void win() throws java.io.FileNotFoundException{
+        /*
+        Context context = App.instance.getApplicationContext();
+        if (lootCount > highScore){
+            highScore = lootCount;
+            OutputStreamWriter output = new OutputStreamWriter(context.openFileOutput("HighScore.txt", context.MODE_PRIVATE));
+        }
+         */
     }
 
     public void lose(){
 
+    }
+
+    public Card topCard(){
+        return dungeon.topCard();
+    }
+
+    public Card secondCard(){
+        return dungeon.secondCard();
     }
 
 }
