@@ -1,5 +1,6 @@
 package com.example.onedeckdungeon;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
@@ -8,13 +9,21 @@ public class GameModel {
 
     private Deck dungeon;
     private List<Card> memories;
-    private int lootCount = 0;
-    private int relicCount = 0;
+    private int lootCount;
+    private int relicCount;
     private int highScore;
-    private int gameStatus = 0; // 0=playing, 1=won, 2=lost
+    private int gameStatus; // 0=playing, 1=won, 2=lost
+    private Card lastTraveled;
+    private Card landedOn;
 
-    public GameModel(){
+    public GameModel()
+    {
         dungeon = new Deck();
+        lootCount = 0;
+        relicCount = 0;
+        highScore = 0;
+        gameStatus = 0;
+        lastTraveled = dungeon.topCard();
     }
 
     public void explore(){
@@ -48,10 +57,12 @@ public class GameModel {
         if (choice == 1)
         {
             traverseValue = top.getValue();
+            lastTraveled = top;
         }
         else if (choice == 2)
         {
             traverseValue = second.getValue();
+            lastTraveled = second;
         }
 
         for (int i = 0; i < traverseValue; i++)
@@ -60,7 +71,16 @@ public class GameModel {
             dungeon.addToBottom(top);
             dungeon.removeTop();
         }
+
+        landedOn = dungeon.topCard();
+
         collect();
+
+        // TODO - REMOVE, BUGTESTING ONLY
+        for (int i = 0; i < dungeon.getDeck().size(); i++) {
+            Log.i("gameModel", dungeon.getDeck().get(i).value + ", " + dungeon.getDeck().get(i).faceUp);
+        }
+
     }
 
     public void collect() {
@@ -116,4 +136,7 @@ public class GameModel {
         return gameStatus;
     }
 
+    public Card getLastTraveled() { return lastTraveled; }
+
+    public Card getLandedOn() { return landedOn; }
 }

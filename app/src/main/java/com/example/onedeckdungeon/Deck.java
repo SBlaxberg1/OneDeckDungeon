@@ -71,4 +71,6 @@ public class Deck extends Card{
     public void addToBottom(Card c){
         deck.add(c);
     }
+
+    public List<Card> getDeck() { return deck; }
 }

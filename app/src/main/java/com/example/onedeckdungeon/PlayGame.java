@@ -56,8 +56,8 @@ public class PlayGame extends AppCompatActivity {
     public void traverseFirst(View view)
     {
         if (gameModel.topCard().faceUp && gameModel.topCard().value > 1) {
-            Toast.makeText(this, "You traversed " + gameModel.topCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
             gameModel.traverse(1);
+            displayCollectToast(1);
             updateCardImages();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
@@ -76,8 +76,8 @@ public class PlayGame extends AppCompatActivity {
     {
         if (gameModel.secondCard().faceUp && gameModel.secondCard().value > 1)
         {
-            Toast.makeText(this, "You traversed " + gameModel.secondCard().value + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
             gameModel.traverse(2);
+            displayCollectToast(2);
             updateCardImages();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
@@ -92,14 +92,44 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
+    public void displayCollectToast(int choice)
+    {
+        Card traveled = gameModel.getLastTraveled();
+        Card landedOn = gameModel.getLandedOn();
+
+        int travelAmount = traveled.value;
+
+        if (!landedOn.faceUp)
+        {
+            Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
+        } else
+        {
+            if (landedOn.value == 1)
+                Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and collected a Relic!", Toast.LENGTH_LONG).show();
+            else if (landedOn.value == 0)
+                Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon but encountered a monster! You lose!", Toast.LENGTH_LONG).show();
+            else if (landedOn.value == -1)
+            {
+                if (gameModel.getRelicCount() < 4)
+                    Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and see the exit, but don't have all of the relics yet.", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and escaped through the exit! You win!", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and collected some loot!", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     public void win()
     {
-        Toast.makeText(this, "You Won!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "You Won!", Toast.LENGTH_SHORT).show();
     }
 
     public void lose()
     {
-        Toast.makeText(this, "You Lost!", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "You Lost!", Toast.LENGTH_SHORT).show();
     }
 
     private int getCardImage(Card c)
