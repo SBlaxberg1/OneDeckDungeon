@@ -50,7 +50,7 @@ public class GameModel {
     }
 
     public void retrace(int choice){
-        if (memories.size() > 0) {
+        if (memories.size() > choice) {
             dungeon.addToTop(memories.get(choice));
             memories.remove(choice);
         }
