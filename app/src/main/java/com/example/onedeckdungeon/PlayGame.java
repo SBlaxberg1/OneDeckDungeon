@@ -3,18 +3,11 @@ package com.example.onedeckdungeon;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
@@ -23,6 +16,9 @@ public class PlayGame extends AppCompatActivity {
     private TextView lootAmount;
     private TextView relicCount;
     private DeckRecycleViewAdapter adapter;
+    private ImageView mem1;
+    private ImageView mem2;
+    private ImageView mem3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +27,9 @@ public class PlayGame extends AppCompatActivity {
 
         lootAmount = (TextView) findViewById(R.id.loot_amount);
         relicCount = (TextView) findViewById(R.id.relics_amount);
+        mem1 = (ImageView) findViewById(R.id.memory_slot1);
+        mem2 = (ImageView) findViewById(R.id.memory_slot2);
+        mem3 = (ImageView) findViewById(R.id.memory_slot3);
 
         gameModel = new GameModel();
 
@@ -57,7 +56,7 @@ public class PlayGame extends AppCompatActivity {
     {
         if (gameModel.topCard().getFaceUp() && gameModel.topCard().getValue() > 1) {
             gameModel.traverse(1);
-            displayCollectToast(1);
+            displayCollectToast();
             notifyAllCards();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
@@ -77,7 +76,7 @@ public class PlayGame extends AppCompatActivity {
         if (gameModel.secondCard().getFaceUp() && gameModel.secondCard().getValue() > 1)
         {
             gameModel.traverse(2);
-            displayCollectToast(2);
+            displayCollectToast();
             notifyAllCards();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
@@ -92,7 +91,54 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
-    public void displayCollectToast(int choice)
+    public void memorize(View view)
+    {
+        gameModel.memorize();
+        updateMemories();
+        notifyAllCards();
+    }
+
+    private void retrace(int choice)
+    {
+        gameModel.retrace(choice);
+        updateMemories();
+        notifyAllCards();
+    }
+
+    public void retrace1(View view)
+    {
+        retrace(0);
+    }
+
+    public void retrace2(View view)
+    {
+        retrace(1);
+    }
+
+    public void retrace3(View view)
+    {
+        retrace(2);
+    }
+
+    private void updateMemories()
+    {
+        if (gameModel.getMemories().size() > 0)
+            mem1.setImageResource(gameModel.getMemories().get(0).getImage());
+        else
+            mem1.setImageResource(R.drawable.memory_empty);
+
+        if (gameModel.getMemories().size() > 1)
+            mem2.setImageResource(gameModel.getMemories().get(1).getImage());
+        else
+            mem2.setImageResource(R.drawable.memory_empty);
+
+        if (gameModel.getMemories().size() > 2)
+            mem3.setImageResource(gameModel.getMemories().get(2).getImage());
+        else
+            mem3.setImageResource(R.drawable.memory_empty);
+    }
+
+    public void displayCollectToast()
     {
         Card traveled = gameModel.getLastTraveled();
         Card landedOn = gameModel.getLandedOn();

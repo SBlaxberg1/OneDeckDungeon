@@ -3,6 +3,7 @@ package com.example.onedeckdungeon;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameModel {
@@ -19,6 +20,7 @@ public class GameModel {
     public GameModel()
     {
         dungeon = new Deck();
+        memories = new ArrayList<>();
         lootCount = 0;
         relicCount = 0;
         highScore = 0;
@@ -37,17 +39,21 @@ public class GameModel {
 
     public void memorize(){
         Card top = dungeon.topCard();
-        if (memories.size() < 3) {
-            if (top.getValue() >= 2 && top.getValue() <= 10) {
-                memories.add(top);
-                dungeon.removeTop();
+        if (top.getFaceUp()) {
+            if (memories.size() < 3) {
+                if (top.getValue() >= 2 && top.getValue() <= 10) {
+                    memories.add(top);
+                    dungeon.removeTop();
+                }
             }
         }
     }
 
     public void retrace(int choice){
-        dungeon.addToTop(memories.get(choice));
-        memories.remove(choice);
+        if (memories.size() > 0) {
+            dungeon.addToTop(memories.get(choice));
+            memories.remove(choice);
+        }
     }
 
     public void traverse(int choice){

@@ -3,7 +3,8 @@
     <string name="dungeon_deck">Dungeon Deck</string>
     <string name="look_ahead">Look Ahead</string>
     <string name="explore">Explore</string>
-    <string name="traverse">Traverse</string>
+    <string name="traverse_first">Traverse\nFirst</string>
+    <string name="traverse_second">Traverse\nSecond</string>
     <string name="memorize">Memorize</string>
     <string name="stored_memories">STORED MEMORIES:</string>
     <string name="loot_gathered">LOOT GATHERED: </string>
