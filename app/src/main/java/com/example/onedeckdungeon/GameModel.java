@@ -78,7 +78,7 @@ public class GameModel {
 
         // TODO - REMOVE, BUGTESTING ONLY
         for (int i = 0; i < dungeon.getDeck().size(); i++) {
-            Log.i("gameModel", dungeon.getDeck().get(i).value + ", " + dungeon.getDeck().get(i).faceUp);
+            Log.i("gameModel", dungeon.getDeck().get(i).getValue() + ", " + dungeon.getDeck().get(i).getFaceUp());
         }
 
     }
@@ -118,6 +118,14 @@ public class GameModel {
 
     public Card secondCard(){
         return dungeon.secondCard();
+    }
+
+    public Deck getDungeon() {
+        return dungeon;
+    }
+
+    public List<Card> getMemories() {
+        return memories;
     }
 
     public int getLootCount() {

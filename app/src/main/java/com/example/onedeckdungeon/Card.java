@@ -1,8 +1,9 @@
 package com.example.onedeckdungeon;
 
 public class Card {
-    protected int value;
-    protected boolean faceUp;
+    private int value;
+    private boolean faceUp;
+    private int image;
 
     public void setValue(int v){
         value = v;
@@ -19,4 +20,8 @@ public class Card {
     public boolean getFaceUp(){
         return faceUp;
     }
+
+    public void setImage(int i) { image = i; }
+
+    public int getImage() { return image; }
 }

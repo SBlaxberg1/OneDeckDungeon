@@ -1,6 +1,8 @@
 package com.example.onedeckdungeon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -12,82 +14,80 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlayGame extends AppCompatActivity {
 
     private GameModel gameModel;
-    private ImageView cardOne;
-    private ImageView cardTwo;
     private TextView lootAmount;
     private TextView relicCount;
+    private DeckRecycleViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playgame_layout);
 
-        cardOne = (ImageView) findViewById(R.id.cardView1);
-        cardTwo = (ImageView) findViewById(R.id.cardView2);
-
         lootAmount = (TextView) findViewById(R.id.loot_amount);
         relicCount = (TextView) findViewById(R.id.relics_amount);
 
         gameModel = new GameModel();
-        startGame();
-    }
 
-    private void startGame()
-    {
-        cardOne.setImageResource(R.drawable.card_back);
-        cardTwo.setImageResource(R.drawable.card_back);
-    }
+        // data to populate the RecyclerView with
+        List<Card> viewCards = gameModel.getDungeon().getDeck();
 
-    public void updateCardImages()
-    {
-        cardOne.setImageResource(getCardImage(gameModel.topCard()));
-        cardTwo.setImageResource(getCardImage(gameModel.secondCard()));
+        // set up the RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.rvCards);
+        LinearLayoutManager horizontalLayoutManager
+                = new LinearLayoutManager(PlayGame.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(horizontalLayoutManager);
+        adapter = new DeckRecycleViewAdapter(this, viewCards);
+        recyclerView.setAdapter(adapter);
     }
 
     public void explore(View view)
     {
         gameModel.explore();
-        updateCardImages();
+        adapter.notifyItemChanged(0);
+        adapter.notifyItemChanged(1);
     }
 
     public void traverseFirst(View view)
     {
-        if (gameModel.topCard().faceUp && gameModel.topCard().value > 1) {
+        if (gameModel.topCard().getFaceUp() && gameModel.topCard().getValue() > 1) {
             gameModel.traverse(1);
             displayCollectToast(1);
-            updateCardImages();
+            notifyAllCards();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
 
             if (gameModel.getGameStatus() == 1)
             {
-                win();
+                //win();
             } else if (gameModel.getGameStatus() == 2)
             {
-                lose();
+                //lose();
             }
         }
     }
 
     public void traverseSecond(View view)
     {
-        if (gameModel.secondCard().faceUp && gameModel.secondCard().value > 1)
+        if (gameModel.secondCard().getFaceUp() && gameModel.secondCard().getValue() > 1)
         {
             gameModel.traverse(2);
             displayCollectToast(2);
-            updateCardImages();
+            notifyAllCards();
             lootAmount.setText(String.valueOf(gameModel.getLootCount()));
             relicCount.setText(String.valueOf(gameModel.getRelicCount()));
 
             if (gameModel.getGameStatus() == 1)
             {
-                win();
+                //win();
             } else if (gameModel.getGameStatus() == 2)
             {
-                lose();
+                //lose();
             }
         }
     }
@@ -97,18 +97,18 @@ public class PlayGame extends AppCompatActivity {
         Card traveled = gameModel.getLastTraveled();
         Card landedOn = gameModel.getLandedOn();
 
-        int travelAmount = traveled.value;
+        int travelAmount = traveled.getValue();
 
-        if (!landedOn.faceUp)
+        if (!landedOn.getFaceUp())
         {
             Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon.", Toast.LENGTH_SHORT).show();
         } else
         {
-            if (landedOn.value == 1)
+            if (landedOn.getValue() == 1)
                 Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and collected a Relic!", Toast.LENGTH_LONG).show();
-            else if (landedOn.value == 0)
+            else if (landedOn.getValue() == 0)
                 Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon but encountered a monster! You lose!", Toast.LENGTH_LONG).show();
-            else if (landedOn.value == -1)
+            else if (landedOn.getValue() == -1)
             {
                 if (gameModel.getRelicCount() < 4)
                     Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and see the exit, but don't have all of the relics yet.", Toast.LENGTH_LONG).show();
@@ -122,52 +122,12 @@ public class PlayGame extends AppCompatActivity {
         }
     }
 
-    public void win()
+    private void notifyAllCards()
     {
-        //Toast.makeText(this, "You Won!", Toast.LENGTH_SHORT).show();
-    }
-
-    public void lose()
-    {
-        //Toast.makeText(this, "You Lost!", Toast.LENGTH_SHORT).show();
-    }
-
-    private int getCardImage(Card c)
-    {
-        if (c.faceUp)
+        for (int i = 0; i < gameModel.getDungeon().getDeck().size(); i++)
         {
-            if (c.value == -1)
-            {
-                return R.drawable.woodendoor;
-            } else if (c.value == 0) {
-                return R.drawable.goblin;
-            } else if (c.value == 1) {
-                return R.drawable.holygrail;
-            } else if (c.value == 2) {
-                return R.drawable.loot2;
-            } else if (c.value == 2) {
-                return R.drawable.loot2;
-            } else if (c.value == 3) {
-                return R.drawable.loot3;
-            } else if (c.value == 4) {
-                return R.drawable.loot4;
-            } else if (c.value == 5) {
-                return R.drawable.loot5;
-            } else if (c.value == 6) {
-                return R.drawable.loot6;
-            } else if (c.value == 7) {
-                return R.drawable.loot7;
-            } else if (c.value == 8) {
-                return R.drawable.loot8;
-            } else if (c.value == 9) {
-                return R.drawable.loot9;
-            } else if (c.value == 10) {
-                return R.drawable.loot10;
-            } else
-                return R.drawable.card_default;
-        } else
-        {
-            return R.drawable.card_back;
+            adapter.notifyItemChanged(i);
         }
     }
+
 }
