@@ -3,6 +3,8 @@ package com.example.onedeckdungeon;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -174,6 +176,12 @@ public class PlayGame extends AppCompatActivity {
         {
             adapter.notifyItemChanged(i);
         }
+    }
+
+    public void goToRules(View view)
+    {
+        Intent rulesPage = new Intent(this, RulesPage.class);
+        startActivity(rulesPage);
     }
 
 }

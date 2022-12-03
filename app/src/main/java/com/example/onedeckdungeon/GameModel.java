@@ -1,8 +1,5 @@
 package com.example.onedeckdungeon;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +27,9 @@ public class GameModel {
 
     public void explore(){
         Card top = dungeon.topCard();
-        Card second = dungeon.secondCard();
-        if (top.getFaceUp() == false){
+        if (!top.getFaceUp()){
             top.setFaceUp(true);
+            Card second = dungeon.secondCard();
             second.setFaceUp(true);
         }
     }
@@ -81,11 +78,6 @@ public class GameModel {
         landedOn = dungeon.topCard();
 
         collect();
-
-        // TODO - REMOVE, BUGTESTING ONLY
-        for (int i = 0; i < dungeon.getDeck().size(); i++) {
-            Log.i("gameModel", dungeon.getDeck().get(i).getValue() + ", " + dungeon.getDeck().get(i).getFaceUp());
-        }
 
     }
 

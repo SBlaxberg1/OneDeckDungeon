@@ -13,31 +13,33 @@
         android:theme="@style/Theme.OneDeckDungeon"
         tools:targetApi="31">
         <activity
-            android:name=".MainMenu"
-            android:label="@string/app_name"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".RulesPage"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
-            android:name=".PlayGame"
+            android:name=".MainMenu"
             android:exported="true"
-            android:parentActivityName=".MainMenu">
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainMenu" />
-
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
-
-
+        <activity
+            android:name=".PlayGame"
+            android:exported="true">
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+        </activity>
     </application>
 
 </manifest>

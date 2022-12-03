@@ -30,17 +30,18 @@
             android:onClick="startNewGame" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_highscores"
+            android:id="@+id/button_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/odd_button"
-            android:text="@string/highscores"
+            android:text="@string/rules"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="goToRules" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_settings"

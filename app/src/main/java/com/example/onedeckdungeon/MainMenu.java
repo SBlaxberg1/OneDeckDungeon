@@ -21,4 +21,10 @@ public class MainMenu extends AppCompatActivity {
         Intent newGame = new Intent(this, PlayGame.class);
         startActivity(newGame);
     }
+
+    public void goToRules(View view)
+    {
+        Intent rulesPage = new Intent(this, RulesPage.class);
+        startActivity(rulesPage);
+    }
 }
