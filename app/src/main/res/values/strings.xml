@@ -15,4 +15,6 @@
     <string name="settings">SETTINGS</string>
     <string name="rules">RULES</string>
     <string name="ZERO">0</string>
+    <string name="win">YOU FOUND ALL OF THE RELICS AND ESCAPED! YOU WIN!</string>
+    <string name="lose">YOU FELL PREY TO A TERRIBLE MONSTER! YOU LOSE!</string>
 </resources>

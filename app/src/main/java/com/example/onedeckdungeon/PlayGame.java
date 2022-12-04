@@ -6,8 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.List;
@@ -54,22 +59,27 @@ public class PlayGame extends AppCompatActivity {
         adapter.notifyItemChanged(1);
     }
 
+    public void traverse(int choice)
+    {
+        gameModel.traverse(choice);
+        displayCollectToast();
+        notifyAllCards();
+        lootAmount.setText(String.valueOf(gameModel.getLootCount()));
+        relicCount.setText(String.valueOf(gameModel.getRelicCount()));
+
+        if (gameModel.getGameStatus() == 1)
+        {
+            win();
+        } else if (gameModel.getGameStatus() == 2)
+        {
+            lose();
+        }
+    }
+
     public void traverseFirst(View view)
     {
         if (gameModel.topCard().getFaceUp() && gameModel.topCard().getValue() > 1) {
-            gameModel.traverse(1);
-            displayCollectToast();
-            notifyAllCards();
-            lootAmount.setText(String.valueOf(gameModel.getLootCount()));
-            relicCount.setText(String.valueOf(gameModel.getRelicCount()));
-
-            if (gameModel.getGameStatus() == 1)
-            {
-                //win();
-            } else if (gameModel.getGameStatus() == 2)
-            {
-                //lose();
-            }
+            traverse(1);
         }
     }
 
@@ -77,19 +87,7 @@ public class PlayGame extends AppCompatActivity {
     {
         if (gameModel.secondCard().getFaceUp() && gameModel.secondCard().getValue() > 1)
         {
-            gameModel.traverse(2);
-            displayCollectToast();
-            notifyAllCards();
-            lootAmount.setText(String.valueOf(gameModel.getLootCount()));
-            relicCount.setText(String.valueOf(gameModel.getRelicCount()));
-
-            if (gameModel.getGameStatus() == 1)
-            {
-                //win();
-            } else if (gameModel.getGameStatus() == 2)
-            {
-                //lose();
-            }
+            traverse(2);
         }
     }
 
@@ -155,13 +153,13 @@ public class PlayGame extends AppCompatActivity {
             if (landedOn.getValue() == 1)
                 Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and collected a Relic!", Toast.LENGTH_LONG).show();
             else if (landedOn.getValue() == 0)
-                Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon but encountered a monster! You lose!", Toast.LENGTH_LONG).show();
+            {}//Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon but encountered a monster! You lose!", Toast.LENGTH_LONG).show();
             else if (landedOn.getValue() == -1)
             {
                 if (gameModel.getRelicCount() < 4)
                     Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and see the exit, but don't have all of the relics yet.", Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and escaped through the exit! You win!", Toast.LENGTH_LONG).show();
+                {}//Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and escaped through the exit! You win!", Toast.LENGTH_LONG).show();
             }
             else
             {
@@ -183,5 +181,65 @@ public class PlayGame extends AppCompatActivity {
         Intent rulesPage = new Intent(this, RulesPage.class);
         startActivity(rulesPage);
     }
+
+    private void win()
+    {
+        showWinPopup();
+    }
+
+    private void lose()
+    {
+        showLosePopup();
+    }
+
+
+    public void showWinPopup() {
+
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.winpopup_layout, null);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = false;
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        LinearLayout view = new LinearLayout(this);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                finish();
+                return true;
+            }
+        });
+    }
+
+    public void showLosePopup() {
+
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.losepopup_layout, null);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = false;
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        LinearLayout view = new LinearLayout(this);
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                finish();
+                return true;
+            }
+        });
+    }
+
 
 }
