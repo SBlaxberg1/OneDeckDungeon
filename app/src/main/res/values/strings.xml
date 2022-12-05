@@ -17,4 +17,6 @@
     <string name="ZERO">0</string>
     <string name="win">YOU FOUND ALL OF THE RELICS AND ESCAPED! YOU WIN!</string>
     <string name="lose">YOU FELL PREY TO A TERRIBLE MONSTER! YOU LOSE!</string>
+
+    <string name="ruleset">Objective: Collect all relics, then find the exit.\n\nExplore: Flips over the first two cards if they are face down.\n\nMemorize: Adds the top card to the memories pile if it is a number.\n\nRetrace: Puts the selected card on top of the deck.\n\nTraverse: Move through the dungeon based on the number of the card. After traversing, the card you landed on will be collected.\nIf it is a number card, it gets removed from the deck and added to the loot count.\nIf it's a relic, it gets removed from the deck and added to the relic count.\nIf it's a monster, you lose.\nIf it's the exit and you have all relics, then you win, otherwise nothing happens.\n\nIf at any point you can't traverse using the top two cards, you must retrace from the memories pile.\nIf there are no memories to retrace from, the game is lost.</string>
 </resources>
