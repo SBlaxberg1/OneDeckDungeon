@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class PlayGame extends AppCompatActivity {
@@ -184,6 +193,9 @@ public class PlayGame extends AppCompatActivity {
 
     private void win()
     {
+        int newScore = gameModel.getScore();
+        if (newScore > Integer.parseInt(getHighScore()))
+            writeHighScore(newScore);
         showWinPopup();
     }
 
@@ -191,7 +203,6 @@ public class PlayGame extends AppCompatActivity {
     {
         showLosePopup();
     }
-
 
     public void showWinPopup() {
 
@@ -241,5 +252,44 @@ public class PlayGame extends AppCompatActivity {
         });
     }
 
+    private void writeHighScore(int highScore) {
+        BufferedWriter bufferedWriter = null;
+        try {
+            bufferedWriter = new BufferedWriter(new FileWriter(new
+                    File(getFilesDir()+File.separator+"highscore.txt")));
+            bufferedWriter.write(highScore + "");
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getHighScore() {
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(new
+                    File(getFilesDir()+File.separator+"highscore.txt")));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String read = "";
+        StringBuilder builder = new StringBuilder("");
+
+        while(true){
+            try {
+                if (!((read = bufferedReader.readLine()) != null)) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            builder.append(read);
+        }
+        Log.d("Output", builder.toString());
+        try {
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(builder);
+    }
 
 }

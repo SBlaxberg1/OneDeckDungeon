@@ -9,7 +9,7 @@ public class GameModel {
     private List<Card> memories;
     private int lootCount;
     private int relicCount;
-    private int highScore;
+    private int score;
     private int gameStatus; // 0=playing, 1=won, 2=lost
     private Card lastTraveled;
     private Card landedOn;
@@ -20,7 +20,7 @@ public class GameModel {
         memories = new ArrayList<>();
         lootCount = 0;
         relicCount = 0;
-        highScore = 0;
+        score = 0;
         gameStatus = 0;
         lastTraveled = dungeon.topCard();
     }
@@ -100,9 +100,7 @@ public class GameModel {
     }
 
     public void win() {
-        if (lootCount > highScore){
-            highScore = (lootCount * 3);
-        }
+        score = (lootCount * 4);
         gameStatus = 1;
     }
 
@@ -134,8 +132,8 @@ public class GameModel {
         return relicCount;
     }
 
-    public int getHighScore() {
-        return highScore;
+    public int getScore() {
+        return score;
     }
 
     public int getGameStatus() {

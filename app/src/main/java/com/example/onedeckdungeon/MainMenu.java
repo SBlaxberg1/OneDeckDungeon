@@ -27,4 +27,11 @@ public class MainMenu extends AppCompatActivity {
         Intent rulesPage = new Intent(this, RulesPage.class);
         startActivity(rulesPage);
     }
+
+    public void goToHighScore(View view)
+    {
+        Intent highScorePage = new Intent(this, HighScore.class);
+        startActivity(highScorePage);
+    }
+
 }

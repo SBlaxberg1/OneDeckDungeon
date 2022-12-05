@@ -48,10 +48,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/odd_button"
-            android:text="@string/settings"
+            android:text="@string/highscores"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="goToHighScore"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

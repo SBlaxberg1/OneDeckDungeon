@@ -13,6 +13,13 @@
         android:theme="@style/Theme.OneDeckDungeon"
         tools:targetApi="31">
         <activity
+            android:name=".HighScore"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".RulesPage"
             android:exported="false">
             <meta-data
@@ -36,9 +43,9 @@
         <activity
             android:name=".PlayGame"
             android:exported="true">
-        <meta-data
-            android:name="android.app.lib_name"
-            android:value="" />
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
     </application>
 
