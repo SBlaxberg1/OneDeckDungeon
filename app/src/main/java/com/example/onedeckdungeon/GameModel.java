@@ -1,5 +1,7 @@
 package com.example.onedeckdungeon;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -116,12 +118,12 @@ public class GameModel {
         Card second = dungeon.secondCard();
 
         if (top.getFaceUp() && second.getFaceUp()){
-            if ((top.getValue() < 2 && second.getValue() < 2) && memories.size() == 0){
+            if ((top.getValue() < 2 && second.getValue() < 2) && (memories.size() == 0)){
                 return false;
             }
         }
         if (top.getFaceUp() && !second.getFaceUp()){
-            if (top.getValue() < 2 && memories.size() == 0){
+            if (top.getValue() < 2 && (memories.size() == 0)){
                 return false;
             }
         }
