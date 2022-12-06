@@ -66,6 +66,10 @@ public class PlayGame extends AppCompatActivity {
         gameModel.explore();
         adapter.notifyItemChanged(0);
         adapter.notifyItemChanged(1);
+        if (gameModel.getGameStatus() == 2)
+        {
+            lose();
+        }
     }
 
     public void traverse(int choice)
