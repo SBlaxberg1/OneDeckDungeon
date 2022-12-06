@@ -1,5 +1,7 @@
 package com.example.onedeckdungeon;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +29,16 @@ public class GameModel {
 
     public void explore(){
         Card top = dungeon.topCard();
+        boolean traversable;
         if (!top.getFaceUp()){
             top.setFaceUp(true);
             Card second = dungeon.secondCard();
             second.setFaceUp(true);
+        }
+
+        traversable = canTraverse();
+        if (!traversable){
+            lose();
         }
     }
 
@@ -56,6 +64,7 @@ public class GameModel {
     public void traverse(int choice){
         Card top = dungeon.topCard();
         Card second = dungeon.secondCard();
+        boolean traversable;
         int traverseValue = 0;
         if (choice == 1)
         {
@@ -79,6 +88,11 @@ public class GameModel {
 
         collect();
 
+        traversable = canTraverse();
+        if (!traversable){
+            lose();
+        }
+
     }
 
     public void collect() {
@@ -97,6 +111,23 @@ public class GameModel {
                 dungeon.removeTop();
             }
         }
+    }
+
+    public boolean canTraverse(){
+        Card top = dungeon.topCard();
+        Card second = dungeon.secondCard();
+
+        if (top.getFaceUp() && second.getFaceUp()){
+            if ((top.getValue() < 2 && second.getValue() < 2) && (memories.size() == 0)){
+                return false;
+            }
+        }
+        if (top.getFaceUp() && !second.getFaceUp()){
+            if (top.getValue() < 2 && (memories.size() == 0)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void win() {
