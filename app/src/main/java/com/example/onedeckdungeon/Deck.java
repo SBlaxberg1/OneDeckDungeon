@@ -59,8 +59,6 @@ public class Deck {
             return R.drawable.holygrail;
         } else if (i == 2) {
             return R.drawable.loot2;
-        } else if (i == 2) {
-            return R.drawable.loot2;
         } else if (i == 3) {
             return R.drawable.loot3;
         } else if (i == 4) {
