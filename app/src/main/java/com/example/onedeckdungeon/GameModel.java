@@ -1,7 +1,5 @@
 package com.example.onedeckdungeon;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +13,11 @@ public class GameModel {
     private int gameStatus; // 0=playing, 1=won, 2=lost
     private Card lastTraveled;
     private Card landedOn;
+    private int difficulty;
 
-    public GameModel(int difficulty)
+    public GameModel()
     {
+        difficulty = Settings.getDifficulty();
         dungeon = new Deck(difficulty);
         memories = new ArrayList<>();
         lootCount = 0;

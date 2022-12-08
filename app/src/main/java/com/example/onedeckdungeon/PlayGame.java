@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class PlayGame extends AppCompatActivity {
         mem2 = (ImageView) findViewById(R.id.memory_slot2);
         mem3 = (ImageView) findViewById(R.id.memory_slot3);
 
-        gameModel = new GameModel(3);
+        gameModel = new GameModel();
 
         // data to populate the RecyclerView with
         List<Card> viewCards = gameModel.getDungeon().getDeck();

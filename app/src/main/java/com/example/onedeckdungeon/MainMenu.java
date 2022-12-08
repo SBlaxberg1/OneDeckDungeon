@@ -8,13 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenu extends AppCompatActivity {
 
-    private GameModel gameModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_layout);
-
     }
 
     public void startNewGame(View view) {
@@ -32,6 +29,12 @@ public class MainMenu extends AppCompatActivity {
     {
         Intent highScorePage = new Intent(this, HighScore.class);
         startActivity(highScorePage);
+    }
+
+    public void goToSettings(View view)
+    {
+        Intent settingsPage = new Intent(this, Settings.class);
+        startActivity(settingsPage);
     }
 
 }

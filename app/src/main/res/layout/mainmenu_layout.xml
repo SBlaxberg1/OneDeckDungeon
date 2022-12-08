@@ -7,8 +7,8 @@
     android:background="@drawable/odd_icon_bg" >
 
     <LinearLayout
-        android:layout_width="287dp"
-        android:layout_height="466dp"
+        android:layout_width="305dp"
+        android:layout_height="615dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,40 +20,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/odd_button"
+            android:onClick="startNewGame"
             android:text="@string/play"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="startNewGame" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/odd_button"
+            android:onClick="goToRules"
             android:text="@string/rules"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="goToRules" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_highscore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/odd_button"
+            android:onClick="goToHighScore"
+            android:text="@string/highscores"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/odd_button"
-            android:text="@string/highscores"
+            android:onClick="goToSettings"
+            android:text="@string/settings"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:onClick="goToHighScore"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
