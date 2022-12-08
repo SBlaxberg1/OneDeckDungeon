@@ -15,10 +15,20 @@ public class GameModel {
     private int gameStatus; // 0=playing, 1=won, 2=lost
     private Card lastTraveled;
     private Card landedOn;
+    private int difficultyHolder;
+    private int relicGoal = 0;
 
-    public GameModel()
+    public GameModel(int difficulty)
     {
-        dungeon = new Deck();
+        difficultyHolder = difficulty;
+        if (difficultyHolder == 1){
+            relicGoal = 2;
+        } else if (difficultyHolder == 2){
+            relicGoal = 3;
+        } else if (difficultyHolder == 3){
+            relicGoal = 4;
+        }
+        dungeon = new Deck(difficulty);
         memories = new ArrayList<>();
         lootCount = 0;
         relicCount = 0;
@@ -104,7 +114,7 @@ public class GameModel {
             } else if (top.getValue() == 0) {
                 lose();
             } else if (top.getValue() == -1) {
-                if (relicCount == 4)
+                if (relicCount == relicGoal)
                     win();
             } else {
                 lootCount++;
