@@ -47,7 +47,7 @@ public class PlayGame extends AppCompatActivity {
         mem2 = (ImageView) findViewById(R.id.memory_slot2);
         mem3 = (ImageView) findViewById(R.id.memory_slot3);
 
-        gameModel = new GameModel();
+        gameModel = new GameModel(3);
 
         // data to populate the RecyclerView with
         List<Card> viewCards = gameModel.getDungeon().getDeck();

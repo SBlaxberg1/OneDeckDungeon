@@ -16,9 +16,9 @@ public class GameModel {
     private Card lastTraveled;
     private Card landedOn;
 
-    public GameModel()
+    public GameModel(int difficulty)
     {
-        dungeon = new Deck();
+        dungeon = new Deck(difficulty);
         memories = new ArrayList<>();
         lootCount = 0;
         relicCount = 0;
