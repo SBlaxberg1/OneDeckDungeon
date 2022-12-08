@@ -9,12 +9,30 @@ import android.widget.RadioGroup;
 public class Settings extends AppCompatActivity {
 
     private RadioGroup difficultyChoice;
+    private RadioButton easyButton;
+    private RadioButton medButton;
+    private RadioButton hardButton;
     private static int difficulty = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
+
+        easyButton = (RadioButton) findViewById(R.id.easyButton);
+        medButton = (RadioButton) findViewById(R.id.medButton);
+        hardButton = (RadioButton) findViewById(R.id.hardButton);
+
+        if (difficulty == 1)
+        {
+            easyButton.setChecked(true);
+        } else if (difficulty == 2)
+        {
+            medButton.setChecked(true);
+        } else if (difficulty == 3)
+        {
+            hardButton.setChecked(true);
+        }
 
         difficultyChoice = (RadioGroup) findViewById(R.id.settingsChoice);
         difficultyChoice.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
