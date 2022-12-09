@@ -182,4 +182,6 @@ public class GameModel {
     public Card getLastTraveled() { return lastTraveled; }
 
     public Card getLandedOn() { return landedOn; }
+
+    public int getDifficulty() { return difficulty;}
 }

@@ -170,7 +170,15 @@ public class PlayGame extends AppCompatActivity {
             {}//Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon but encountered a monster! You lose!", Toast.LENGTH_LONG).show();
             else if (landedOn.getValue() == -1)
             {
-                if (gameModel.getRelicCount() < 4)
+                int relicGoal = 0;
+                if (gameModel.getDifficulty() == 1){
+                    relicGoal = 2;
+                } else if (gameModel.getDifficulty() == 2){
+                    relicGoal = 3;
+                } else if (gameModel.getDifficulty() == 3){
+                    relicGoal = 4;
+                }
+                if (gameModel.getRelicCount() < relicGoal)
                     Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and see the exit, but don't have all of the relics yet.", Toast.LENGTH_LONG).show();
                 else
                 {}//Toast.makeText(this, "You traversed " + travelAmount + " rooms through the dungeon and escaped through the exit! You win!", Toast.LENGTH_LONG).show();
