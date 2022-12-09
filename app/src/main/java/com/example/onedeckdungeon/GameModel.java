@@ -97,6 +97,14 @@ public class GameModel {
 
     public void collect() {
         Card top = dungeon.topCard();
+        int relicGoal = 0;
+        if (difficulty == 1){
+            relicGoal = 2;
+        } else if (difficulty == 2){
+            relicGoal = 3;
+        } else if (difficulty == 3){
+            relicGoal = 4;
+        }
         if (top.getFaceUp()) {
             if (top.getValue() == 1) {
                 relicCount++;
@@ -104,7 +112,7 @@ public class GameModel {
             } else if (top.getValue() == 0) {
                 lose();
             } else if (top.getValue() == -1) {
-                if (relicCount == 4)
+                if (relicCount == relicGoal)
                     win();
             } else {
                 lootCount++;
