@@ -89,7 +89,7 @@ public class GameModel {
         collect();
 
         traversable = canTraverse();
-        if (!traversable){
+        if (!traversable && gameStatus != 1){
             lose();
         }
 
@@ -139,7 +139,7 @@ public class GameModel {
     }
 
     public void win() {
-        score = (lootCount * 4);
+        score = (lootCount * difficulty);
         gameStatus = 1;
     }
 
@@ -184,4 +184,9 @@ public class GameModel {
     public Card getLandedOn() { return landedOn; }
 
     public int getDifficulty() { return difficulty;}
+
+    public void setScore(int i)
+    {
+        score = i;
+    }
 }

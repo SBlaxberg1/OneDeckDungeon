@@ -36,6 +36,7 @@ public class HighScore extends AppCompatActivity {
                     File(getFilesDir()+File.separator+"highscore.txt")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return "0";
         }
         String read = "";
         StringBuilder builder = new StringBuilder("");
@@ -45,6 +46,7 @@ public class HighScore extends AppCompatActivity {
                 if (!((read = bufferedReader.readLine()) != null)) break;
             } catch (IOException e) {
                 e.printStackTrace();
+                return "0";
             }
             builder.append(read);
         }
@@ -54,7 +56,12 @@ public class HighScore extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return String.valueOf(builder);
+
+        if (String.valueOf(builder) != "")
+        {
+            return String.valueOf(builder);
+        }
+        return "0";
     }
 
 }

@@ -7,6 +7,25 @@
     android:background="@drawable/odd_icon_bg">
 
 
+    <TextView
+        android:id="@+id/score_blurb"
+        android:layout_width="397dp"
+        android:layout_height="189dp"
+        android:layout_marginTop="536dp"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:shadowColor="@color/black"
+        android:shadowDx="1.9"
+        android:shadowDy="1.9"
+        android:shadowRadius="2.9"
+        android:text="@string/settings_blurb"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="273dp"
@@ -75,7 +94,7 @@
         android:layout_marginTop="296dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.711"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -86,12 +105,12 @@
             android:layout_margin="1dp"
             android:buttonTint="@color/black"
             android:fontFamily="monospace"
-            android:text="@string/easy"
-            android:textColor="@color/black"
             android:shadowColor="@color/black"
             android:shadowDx="1.9"
             android:shadowDy="1.9"
             android:shadowRadius="2.9"
+            android:text="@string/easy"
+            android:textColor="@color/black"
             android:textSize="48sp" />
 
         <RadioButton
@@ -115,11 +134,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="1dp"
             android:buttonTint="@color/black"
+            android:fontFamily="monospace"
             android:shadowColor="@color/black"
             android:shadowDx="1.9"
             android:shadowDy="1.9"
             android:shadowRadius="2.9"
-            android:fontFamily="monospace"
             android:text="@string/hard"
             android:textColor="@color/black"
             android:textSize="48sp" />

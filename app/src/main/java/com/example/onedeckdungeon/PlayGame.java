@@ -36,6 +36,7 @@ public class PlayGame extends AppCompatActivity {
     private ImageView mem1;
     private ImageView mem2;
     private ImageView mem3;
+    private TextView relicGoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +48,29 @@ public class PlayGame extends AppCompatActivity {
         mem1 = (ImageView) findViewById(R.id.memory_slot1);
         mem2 = (ImageView) findViewById(R.id.memory_slot2);
         mem3 = (ImageView) findViewById(R.id.memory_slot3);
+        relicGoal = (TextView) findViewById(R.id.text_relicGoal);
 
         gameModel = new GameModel();
 
-        // data to populate the RecyclerView with
+        // setup RecyclerView for scrollable cards
         List<Card> viewCards = gameModel.getDungeon().getDeck();
-
-        // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvCards);
         LinearLayoutManager horizontalLayoutManager
                 = new LinearLayoutManager(PlayGame.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(horizontalLayoutManager);
         adapter = new DeckRecycleViewAdapter(this, viewCards);
         recyclerView.setAdapter(adapter);
+
+        // Set Relic goal (i.e 0/4 Relics)
+        int goal = 0;
+        if (gameModel.getDifficulty() == 1){
+            goal = 2;
+        } else if (gameModel.getDifficulty() == 2){
+            goal = 3;
+        } else if (gameModel.getDifficulty() == 3){
+            goal = 4;
+        }
+        relicGoal.setText(Integer.toString(goal));
     }
 
     public void explore(View view)
